@@ -23,4 +23,5 @@
     }
 
     window.shortcuts = shortcuts;
+    
  })();
