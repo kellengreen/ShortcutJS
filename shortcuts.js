@@ -5,20 +5,21 @@
     shortcuts.toArray = function(object) {
         return Array.prototype.slice.call(object);
     }
-    
+
     shortcuts.ready = function(callback) {
-        if (document.readyState === 'loading') {
+        var doc = document;
+        if (doc.readyState === 'loading') {
             var event = 'readystatechange',
                 listener = function() {
-                    document.removeEventListener(event, listener);
+                    doc.removeEventListener(event, listener);
                     callback();
                 };
-            document.addEventListener(event, listener);
+            doc.addEventListener(event, listener);
         } else {
             callback();
         }
     }
 
     window.shortcuts = shortcuts;
-    
+
  })();
