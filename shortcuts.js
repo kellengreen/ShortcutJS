@@ -1,25 +1,18 @@
 (function() {
 
-    var shortcuts = {};
+    var w = window,
+        d = document;
 
-    shortcuts.toArray = function(object) {
-        return Array.prototype.slice.call(object);
-    }
-
-    shortcuts.ready = function(callback) {
-        var doc = document;
-        if (doc.readyState === 'loading') {
-            var event = 'readystatechange',
-                listener = function() {
-                    doc.removeEventListener(event, listener);
+    w.ready = function(callback) {
+        if (d.readyState === 'loading') {
+            var event = 'readystatechange';
+            d.addEventListener(event, function listener() {
+                    d.removeEventListener(event, listener);
                     callback();
-                };
-            doc.addEventListener(event, listener);
+            });
         } else {
             callback();
         }
     }
-
-    window.shortcuts = shortcuts;
 
  })();
