@@ -1,9 +1,10 @@
 (function() {
 
     var w = window,
-        d = document;
+        d = document,
+        s = {};
 
-    w.ready = function(callback) {
+    s.ready = function(callback) {
         if (d.readyState === 'loading') {
             var event = 'readystatechange';
             d.addEventListener(event, function listener() {
@@ -14,5 +15,7 @@
             callback();
         }
     }
+
+    w.shortcuts = s;
 
  })();
