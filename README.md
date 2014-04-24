@@ -1,4 +1,2 @@
-shortcutjs
-==========
-
-ShortcutJS
+ShortcutsJS
+===========
