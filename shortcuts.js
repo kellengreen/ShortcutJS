@@ -1,21 +1,14 @@
-(function() {
-
-    var w = window,
-        d = document,
-        s = {};
-
-    s.ready = function(callback) {
-        if (d.readyState === 'loading') {
-            var event = 'readystatechange';
-            d.addEventListener(event, function listener() {
-                    d.removeEventListener(event, listener);
-                    callback();
-            });
-        } else {
-            callback();
+export async function ready() {
+    return new Promise(resolve => {
+        if (document.readyState === 'loading') {
+            const event = 'readystatechange'
+            document.addEventListener(event, function listener() {
+                document.removeEventListener(event, listener)
+                resolve()
+            })
+        } 
+        else {
+            resolve()
         }
-    }
-
-    w.shortcuts = s;
-
- })();
+    })
+}
